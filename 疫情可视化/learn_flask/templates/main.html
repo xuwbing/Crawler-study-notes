@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>疫情监控</title>
+    <link href="../static/css/main.css" rel="stylesheet"/>
+    <link href="https://iphoto.macsc.com/icon/icon/256/20210423/116266/4660862.png" rel="shortcut icon" type="image/x-icon">
+    <style type="text/css">
+        a{ text-decoration:none}
+        a:hover{ text-decoration:underline}
+        a:visited{color: white;}
+      </style>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/china.js"></script>
+    <script src="../static/js/echarts-wordcloud.js"></script>
+    <script>
+        var winWidth= document.documentElement.clientWidth
+        var winHeight = document.documentElement.clientHeight
+        if (winWidth<winHeight){
+            window.location.href="warning";
+        }
+    </script>
+</head>
+<body>
+    <div id="title">全国疫情实时追踪</div>
+    <div id="time"></div>
+    <a id="web" href="https://github.com/xuwbing" target="_blank" >Author:玄斌</a>
+    <h3 id="email">Email: xyming0502@163.com</h3>
+    <div id="l1"></div>
+    <div id="l2"></div>
+    <div id="c1">
+        <div class="num1"><h1></h1></div>
+        <div class="num2"><h1></h1></div>
+        <div class="num3"><h1></h1></div>
+        <div class="num4"><h1></h1></div>
+        <div class="num5"><h1></h1></div>
+        <div class="txt"><h2>现有确诊</h2></div>
+        <div class="txt"><h2>累计确诊</h2></div>
+        <div class="txt"><h2>无症状病例</h2></div>
+        <div class="txt"><h2>累计治愈</h2></div>
+        <div class="txt"><h2>累计死亡</h2></div>
+        <div class="data"><h5></h5></div>
+    </div>
+    <div id="c2"></div>
+    <div id="warning">所有数据皆来源于网络，仅供参考</div>
+    <div id="r1"></div>
+    <div id="r2"></div>
+<script src="../static/js/EchartsMap.js"></script>
+<script src="../static/js/EchartsLeft1.js"></script>
+<script src="../static/js/EchartsLeft2.js"></script>
+<script src="../static/js/EchartsRight1.js"></script>
+<script src="../static/js/EchartsRight2.js"></script>
+<script src="../static/js/getData.js"></script>
+<script type="text/javascript">     //更改右上角时间
+    window.onload=function()
+    {
+        window.requestAnimationFrame(getDate)
+    }
+
+    function getDate()
+    {
+        window.setTimeout(function(){
+            window.requestAnimationFrame(getDate)   //重复加载
+        },1000)
+        var d=new Date();
+        var year=d.getFullYear()  //获取年
+        var month=d.getMonth()+1;  //获取月，从 Date 对象返回月份 (0 ~ 11)，所以+1
+        var days=d.getDate() //获取日期
+        var hour=d.getHours()   //获取小时
+        var minute=d.getMinutes()  //获取分钟
+        var second=d.getSeconds()   //获取秒
+
+        if(month<10) month="0"+month
+        if(days<10) days="0"+days
+        if(hour<10) hour="0"+hour
+        if(minute<10) minute="0"+minute
+        if(second<10) second="0"+second
+
+        var Tools=document.getElementById("time")
+        var da="当前时间："+year+"年 "+month+"月 "+days+"日 "+" "+hour+":"+minute+":"+second
+        Tools.innerHTML=da
+    }
+</script>
+</body>
+</html>

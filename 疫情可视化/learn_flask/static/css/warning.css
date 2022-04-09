@@ -1,0 +1,13 @@
+#tip{
+    top: 40%;
+    height: 20%;
+    text-align:center;
+    color: black;
+    font-size: 10vh;
+}
+#content{
+    top: 50%;
+    text-align:center;
+    color: black;
+    font-size: 6vh
+}
